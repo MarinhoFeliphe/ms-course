@@ -12,22 +12,20 @@ import com.devsuperior.hroauth.entities.User;
 import com.devsuperior.hroauth.services.UserService;
 
 @RestController
-@RequestMapping(value="/users")
+@RequestMapping(value = "/users")
 public class UserResource {
 
 	@Autowired
-	private UserService userService;
-	
-	@GetMapping("/search")
+	private UserService service;
+
+	@GetMapping(value = "/search")
 	public ResponseEntity<User> findByEmail(@RequestParam String email) {
-		
 		try {
-			User user = this.userService.findByEmail(email);
+			User user = service.findByEmail(email);
 			return ResponseEntity.ok(user);
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		
 	}
-	
 }

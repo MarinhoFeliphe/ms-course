@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.devsuperior.hroauth.entities.User;
 
 @Component
-@FeignClient(name="hr-user", path="/users")
+@FeignClient(name = "hr-user", path = "/users")
 public interface UserFeignClient {
 
-	@GetMapping("/search")
-	ResponseEntity<User> findByEmail(@RequestParam String email);
+	@GetMapping(value = "/search")
+	ResponseEntity<User> findByEmail(@RequestParam String email);	
 }
